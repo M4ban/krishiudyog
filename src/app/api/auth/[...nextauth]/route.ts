@@ -5,9 +5,10 @@ import { connectToDatabase } from '@/lib/mongodb';
 import User from '@/models/User';
 import { JWT } from 'next-auth/jwt';
 import { Session } from 'next-auth';
+import { AuthOptions } from 'next-auth';
 
 // Define user type
-interface User {
+interface UserType {
   id: string;
   name: string;
   email: string;
@@ -23,10 +24,14 @@ declare module 'next-auth' {
       image?: string | null;
     }
   }
+  
+  interface JWT {
+    id?: string;
+  }
 }
 
-// Define the auth options
-const authOptions = {
+// Define the auth options with proper typing
+const authOptions: AuthOptions = {
   providers: [
     CredentialsProvider({
       name: 'Credentials',
@@ -67,21 +72,21 @@ const authOptions = {
     })
   ],
   session: {
-    strategy: 'jwt',
+    strategy: 'jwt' as const,
   },
   pages: {
     signIn: '/signin',
   },
   callbacks: {
-    async jwt({ token, user }: { token: JWT; user?: User }) {
+    async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
       }
       return token;
     },
-    async session({ session, token }: { session: Session; token: JWT }) {
+    async session({ session, token }) {
       if (session.user) {
-        session.user.id = token.id as string;
+        session.user.id = token.id;
       }
       return session;
     },
