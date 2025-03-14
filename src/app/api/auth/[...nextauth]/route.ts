@@ -13,6 +13,18 @@ interface User {
   email: string;
 }
 
+// Extend the Session type to include id in the user object
+declare module 'next-auth' {
+  interface Session {
+    user: {
+      id?: string;
+      name?: string | null;
+      email?: string | null;
+      image?: string | null;
+    }
+  }
+}
+
 // Define the auth options
 const authOptions = {
   providers: [
