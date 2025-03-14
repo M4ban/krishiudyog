@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import connectDB from '@/lib/mongodb';
 import Product from '@/models/Product';
-import ProductsClient from './products-client.tsx';
+import ProductsClient from './products-client';
 
 export const metadata: Metadata = {
   title: 'Products | KrishiUdyog',
