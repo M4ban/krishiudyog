@@ -22,7 +22,7 @@ declare module 'next-auth' {
       name?: string | null;
       email?: string | null;
       image?: string | null;
-    }
+    };
   }
   
   interface JWT {
@@ -80,12 +80,12 @@ const authOptions: AuthOptions = {
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        token.id = user.id;
+        token.id = user.id.toString(); // Ensuring it's a string
       }
       return token;
     },
     async session({ session, token }) {
-      if (session.user) {
+      if (session.user && typeof token.id === 'string') {
         session.user.id = token.id;
       }
       return session;
