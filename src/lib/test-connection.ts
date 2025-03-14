@@ -1,5 +1,11 @@
 require('dotenv').config({ path: '.env.local' });
-import mongoose from 'mongoose';
+import mongoose, { Schema, Document } from 'mongoose';
+
+// Define the interface for the test document
+interface TestDocument extends Document {
+  test?: string | null;
+  createdAt: Date;
+}
 
 async function testConnection() {
   try {
@@ -12,9 +18,9 @@ async function testConnection() {
     await mongoose.connect(uri);
     console.log('Successfully connected to MongoDB!');
     
-    // Test creating a simple document
-    const TestSchema = new mongoose.Schema({
-      test: String,
+    // Define the schema with proper typing
+    const TestSchema = new Schema<TestDocument>({
+      test: { type: String, default: null },
       createdAt: { type: Date, default: Date.now }
     });
     
@@ -22,15 +28,16 @@ async function testConnection() {
     let TestModel;
     try {
       // Try to get the existing model
-      TestModel = mongoose.model('TestModel');
+      TestModel = mongoose.model<TestDocument>('TestModel');
     } catch (e) {
       // Model doesn't exist, create it
-      TestModel = mongoose.model('TestModel', TestSchema);
+      TestModel = mongoose.model<TestDocument>('TestModel', TestSchema);
     }
     
     console.log('Creating test document...');
-    const testDoc = await TestModel.create({ test: 'Connection test successful' });
-    console.log('Successfully created test document:', testDoc);
+    // Use an array for create method to avoid type issues
+    const testDoc = await TestModel.create([{ test: 'Connection test successful' }]);
+    console.log('Successfully created test document:', testDoc[0]);
     
     // Clean up
     console.log('Cleaning up...');
