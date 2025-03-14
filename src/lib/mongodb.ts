@@ -50,4 +50,6 @@ async function connectDB() {
   return cached.conn;
 }
 
+// Export both the default function and a named export
+export const connectToDatabase = connectDB;
 export default connectDB; 
