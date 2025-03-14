@@ -3,6 +3,15 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import bcrypt from 'bcryptjs';
 import { connectToDatabase } from '@/lib/mongodb';
 import User from '@/models/User';
+import { JWT } from 'next-auth/jwt';
+import { Session } from 'next-auth';
+
+// Define user type
+interface User {
+  id: string;
+  name: string;
+  email: string;
+}
 
 // Define the auth options
 const authOptions = {
@@ -52,15 +61,15 @@ const authOptions = {
     signIn: '/signin',
   },
   callbacks: {
-    async jwt({ token, user }) {
+    async jwt({ token, user }: { token: JWT; user?: User }) {
       if (user) {
         token.id = user.id;
       }
       return token;
     },
-    async session({ session, token }) {
+    async session({ session, token }: { session: Session; token: JWT }) {
       if (session.user) {
-        session.user.id = token.id;
+        session.user.id = token.id as string;
       }
       return session;
     },
