@@ -1,8 +1,0 @@
-{
-  "/api/seed/route": "app/api/seed/route.js",
-  "/page": "app/page.js",
-  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
-  "/products/page": "app/products/page.js",
-  "/cart/page": "app/cart/page.js",
-  "/dashboard/page": "app/dashboard/page.js"
-}

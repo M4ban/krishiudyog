@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sections": [
-    {"offset": {"line": 5, "column": 0}, "map": {"version":3,"sources":["/turbopack/[project]/src/providers/NextAuthProvider.tsx"],"sourcesContent":["'use client';\r\n\r\nimport { SessionProvider } from 'next-auth/react';\r\n\r\nexport function NextAuthProvider({ children }: { children: React.ReactNode }) {\r\n  return <SessionProvider>{children}</SessionProvider>;\r\n} "],"names":[],"mappings":";;;;;;AAAA;;;AAIO,SAAS,iBAAiB,EAAE,QAAQ,EAAiC;IAC1E,qBAAO;kBAAkB;;;;;;AAC3B;KAFgB"}},
-    {"offset": {"line": 26, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
-}

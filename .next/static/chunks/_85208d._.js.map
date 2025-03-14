@@ -1,8 +1,0 @@
-{
-  "version": 3,
-  "sections": [
-    {"offset": {"line": 5, "column": 0}, "map": {"version":3,"sources":["/turbopack/[project]/src/app/page.tsx"],"sourcesContent":["import HomeClient from './home-client';\r\n\r\nexport default function Home() {\r\n  return <HomeClient />;\r\n} "],"names":[],"mappings":";;;;;;;;;;;;AAEe,SAAS;IACtB,qBAAO,wLAAC;;;;;AACV;KAFwB"}},
-    {"offset": {"line": 27, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}},
-    {"offset": {"line": 35, "column": 0}, "map": {"version":3,"sources":["/turbopack/[project]/node_modules/next/link.js"],"sourcesContent":["module.exports = require('./dist/client/link')\n"],"names":[],"mappings":"AAAA,OAAO,OAAO,GAAG"}},
-    {"offset": {"line": 36, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
-}
