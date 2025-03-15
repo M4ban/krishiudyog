@@ -4,7 +4,7 @@
 
 ## 📝 Description
 
-KrishiUdyog is a modern e-commerce platform designed to connect farmers directly with consumers. The platform aims to eliminate middlemen, ensuring farmers receive fair prices for their produce while consumers get access to fresh, high-quality agricultural products.
+KrishiUdyog is a modern e-commerce platform designed to connect farmers directly with consumers. The platform aims to eliminate middlemen, ensuring farmers receive fair prices for their produce while consumers get access to fresh, high-quality agricultural products. You Can Run the Website Here - https://krishiudyog.vercel.app/
 
 ## 🌟 Features
 
